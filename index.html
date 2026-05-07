@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calvin Klein — Runway 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ck-black: #0a0a0a;
+            --ck-white: #ffffff;
+            --ck-gray: #888888;
+            --ck-light: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--ck-black);
+            color: var(--ck-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ck-white);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://kimi-web-img.moonshot.cn/img/wwd.com/27a5faeda289285b4d4936936e63d5924db89550.jpg') center/cover;
+            filter: brightness(0.4);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            border: 1px solid var(--ck-white);
+            color: var(--ck-white);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: var(--ck-white);
+            color: var(--ck-black);
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 120px 48px;
+            background: var(--ck-black);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ck-gray);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Collection Grid */
+        .collection {
+            padding: 120px 48px;
+            background: var(--ck-light);
+            color: var(--ck-black);
+        }
+
+        .collection .section-header h2 {
+            color: var(--ck-black);
+        }
+
+        .collection .section-header p {
+            color: var(--ck-gray);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            background: var(--ck-black);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: grayscale(20%);
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .grid-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 24px 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--ck-white);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .grid-item:hover .grid-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .grid-overlay h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .grid-overlay span {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* Campaign Section */
+        .campaign {
+            padding: 120px 48px;
+            background: var(--ck-black);
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .campaign-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter 0.4s;
+        }
+
+        .campaign-img:hover {
+            filter: grayscale(0%);
+        }
+
+        .campaign-text {
+            padding: 60px;
+        }
+
+        .campaign-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .campaign-text p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--ck-gray);
+            margin-bottom: 32px;
+        }
+
+        .campaign-text .cta-btn {
+            border-color: var(--ck-white);
+            color: var(--ck-white);
+        }
+
+        .campaign-text .cta-btn:hover {
+            background: var(--ck-white);
+            color: var(--ck-black);
+        }
+
+        /* Backstage Section */
+        .backstage {
+            padding: 120px 48px;
+            background: var(--ck-light);
+            color: var(--ck-black);
+        }
+
+        .backstage .section-header h2 {
+            color: var(--ck-black);
+        }
+
+        .backstage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .backstage-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .backstage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            filter: grayscale(100%);
+        }
+
+        .backstage-item:hover img {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+
+        .backstage-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.9);
+            color: var(--ck-black);
+            padding: 8px 16px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 48px 40px;
+            background: var(--ck-black);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--ck-gray);
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--ck-gray);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--ck-white);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--ck-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 20px 24px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .video-section,
+            .collection,
+            .campaign,
+            .backstage {
+                padding: 80px 24px;
+            }
+            
+            .campaign-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .backstage-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .campaign-text {
+                padding: 40px 24px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Calvin Klein</div>
+        <ul class="nav-links">
+            <li><a href="#show">Показ</a></li>
+            <li><a href="#collection">Коллекция</a></li>
+            <li><a href="#campaign">Кампания</a></li>
+            <li><a href="#backstage">Бэкстейдж</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="show">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Spring / Summer 2026</p>
+            <h1>The Runway</h1>
+            <p class="hero-desc">Минимализм в его чистом виде. Новая коллекция Calvin Klein переосмысливает американскую эстетику через призму современной элегантности.</p>
+            <a href="#video" class="cta-btn">Смотреть показ</a>
+        </div>
+    </section>
+
+    <!-- Live Video -->
+    <section class="video-section" id="video">
+        <div class="section-header fade-in">
+            <p>Прямая трансляция</p>
+            <h2>Runway Live</h2>
+        </div>
+        <div class="video-container fade-in">
+            <iframe 
+                src="https://www.youtube.com/embed/9i1dXa13C2o?rel=0&modestbranding=1" 
+                title="Calvin Klein Fashion Show"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Collection Grid -->
+    <section class="collection" id="collection">
+        <div class="section-header fade-in">
+            <p>Ready-to-Wear</p>
+            <h2>Spring 2026 Collection</h2>
+        </div>
+        <div class="grid">
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/27a5faeda289285b4d4936936e63d5924db89550.jpg" alt="Calvin Klein SS26 Look 1">
+                <div class="grid-overlay">
+                    <h3>Look 01</h3>
+                    <span>Structured Minimalism</span>
+                </div>
+            </div>
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/theimpression.com/6bf00a0f76c5a4cab493c3966c0149625455ae46.jpg" alt="Calvin Klein SS26 Look 2">
+                <div class="grid-overlay">
+                    <h3>Look 02</h3>
+                    <span>Textured Elegance</span>
+                </div>
+            </div>
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/hips.hearstapps.com/06ce1a7b571569c9e845311a902b7f5cd296a9f7.jpg" alt="Calvin Klein FW25 Look">
+                <div class="grid-overlay">
+                    <h3>Look 03</h3>
+                    <span>Urban Utility</span>
+                </div>
+            </div>
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/dd04610f391707d33c82ab52e61c514c31c6015c.jpg" alt="Calvin Klein Backstage">
+                <div class="grid-overlay">
+                    <h3>Look 04</h3>
+                    <span>Power Silhouette</span>
+                </div>
+            </div>
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/84ccae62a888ee7204373f991431fbbef74e78b9.jpg" alt="Calvin Klein Duo">
+                <div class="grid-overlay">
+                    <h3>Look 05</h3>
+                    <span>Monochrome Pairing</span>
+                </div>
+            </div>
+            <div class="grid-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/5df475e43c737dbcaa92612b2ea436083e388dad.jpg" alt="Calvin Klein Metallic">
+                <div class="grid-overlay">
+                    <h3>Look 06</h3>
+                    <span>Metallic Flow</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign -->
+    <section class="campaign" id="campaign">
+        <div class="campaign-grid">
+            <div class="campaign-text fade-in">
+                <p style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--ck-gray); margin-bottom: 16px;">Underwear Campaign 2026</p>
+                <h3>Confidence in Every Line</h3>
+                <p>Новая кампания Calvin Klein Underwear — это празднование уверенности в себе и аутентичности. Съемки проходили в Нью-Йорке с участием моделей и актеров, которые воплощают дух бренда.</p>
+                <a href="#" class="cta-btn">Узнать больше</a>
+            </div>
+            <div class="fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/a30335f06181739dfafb49bbba1566aefdb79076.jpg" alt="Calvin Klein Campaign" class="campaign-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Backstage -->
+    <section class="backstage" id="backstage">
+        <div class="section-header fade-in">
+            <p>Behind the Scenes</p>
+            <h2>Backstage Moments</h2>
+        </div>
+        <div class="backstage-grid">
+            <div class="backstage-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/static01.nyt.com/e315feea1aa7cb3923f544ded8e3e8ba8d069427.jpg" alt="Backstage NYFW">
+                <div class="backstage-label">NYFW Fall 2015</div>
+            </div>
+            <div class="backstage-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/84ccae62a888ee7204373f991431fbbef74e78b9.jpg" alt="Backstage Duo">
+                <div class="backstage-label">Pre-Show</div>
+            </div>
+            <div class="backstage-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/wwd.com/5df475e43c737dbcaa92612b2ea436083e388dad.jpg" alt="Backstage Portrait">
+                <div class="backstage-label">Fitting Room</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">Calvin Klein</div>
+                <p class="footer-desc">Американский дом моды, переосмысливающий минимализм и современную элегантность с 1968 года.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Коллекции</h4>
+                <ul>
+                    <li><a href="#">Женщины</a></li>
+                    <li><a href="#">Мужчины</a></li>
+                    <li><a href="#">Underwear</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Дом</h4>
+                <ul>
+                    <li><a href="#">О бренде</a></li>
+                    <li><a href="#">Устойчивость</a></li>
+                    <li><a href="#">Карьера</a></li>
+                    <li><a href="#">Пресса</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Социальные сети</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">TikTok</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Calvin Klein. Все права защищены.</span>
+            <span>Политика конфиденциальности | Условия использования</span>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Parallax hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+
+</body>
+</html>
